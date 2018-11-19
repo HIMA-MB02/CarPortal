@@ -26,6 +26,7 @@ namespace VahanBlog.Controllers
         // GET: Portals
         public ActionResult Buy(FilterListViewModel Filters, int page = 1)
         {
+        //Method is for the CarPortal Screen in the View.
 
             CarListViewModel model = new CarListViewModel
             {
