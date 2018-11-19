@@ -1,0 +1,297 @@
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@font-face {
+    font-family: BebasNeue;
+    src: url('Fonts/BebasNeue Bold.otf') format('opentype'), url('Fonts/BebasNeue Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Penna;
+    src: url(Fonts/penna.otf) format('opentype'), url(Fonts/penna.ttf) format('truetype');
+}
+
+html {
+  font-size: 62.5%;
+}
+.form-group {
+    margin: 0 auto;
+}
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img {
+    max-width: 100%;
+    padding: 5px;
+    height: auto;
+    box-shadow: 1px 1px 7px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+}
+
+h1 {
+    font-size: 3em;
+    line-height: 1;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1.5em;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 1.5em;
+}
+
+.main-image {
+    width: 380px;
+    margin-bottom: 0.75em;
+}
+
+.thumbnails li {
+    display: inline;
+    margin: 0 10px 0 0;
+    width: 10%;
+}
+body {
+  font-family: BebasNeue;
+  font-weight: bold;    
+  color: #331d35;
+  background-color: #e7e7e7;
+}
+
+a {
+  color: #2B2B2B;
+  text-decoration: none;
+}
+
+navbar-button {
+    background-color: #2B2B2B;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+    color: #7F7F7F;
+}
+
+fa-custom {
+    color: white !important;
+}
+
+#mainNav .navbar-toggler {
+    font-size: 14px;
+    background-color: #2B2B2B !important;
+    color: white;
+    padding: 11px;
+    border: 1px solid #2B2B2B;
+}
+
+#mainNav .navbar-brand {
+    width: 270px;
+    height: 100px;
+    padding-left: 100px;
+}
+
+@media (max-width: 768px) {
+    #mainNav .navbar-brand {
+        width: auto;
+        height: 100px;
+        padding-left: 30px;
+    }
+}
+
+#mainNav a {
+    color: #2B2B2B;
+}
+
+#mainNav .navbar-nav .nav-item {
+    padding-top: 25px;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+    background-color: #2B2B2B;
+}
+
+    #mainNav .navbar-nav .nav-item .nav-link {
+        color: white;
+    }
+
+#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+    color: black;
+}
+
+@media screen and (min-width: 768px) {
+
+    #mainNav .navbar-nav .nav-item {
+        background-color: white;
+    }
+
+        #mainNav .navbar-nav .nav-item .nav-link {
+            color: #2B2B2B;
+        }
+}
+
+#mainNav .navbar-nav .nav-item:hover {
+    outline: none;
+}
+
+#mainNav {
+    letter-spacing: 1px;
+    border-bottom: 0.5px solid black;
+    background: white;
+    font-size: 30px;
+    font-family: BebasNeue;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+    #mainNav.navbar-shrink {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background: white;
+    }
+
+    #mainNav.nav-item:hover {
+        background-color: #222222 !important;
+    }
+/* -------------------------------- 
+
+Main Components 
+
+-------------------------------- */
+.cd-tab-filter {
+    font-size: 30px;
+}
+.cd-header {
+    padding-left: 0px; 
+    width: 100vw; 
+    padding-right: 0px;
+    background-color: #2B2B2B;
+}
+.dropdown-content {
+    display: none;
+    padding: 0px;
+    margin: 0px;
+}
+@media(max-width: 768px) {
+
+    .dropdown-content-filters {
+        display: none;
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+.dropdown-content-filters {
+    display: block;
+    padding: 10px;
+}
+.dropdown {
+    padding : 0px;
+}
+.filter-apply {
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    color: #ffffff;
+    font-size: 1.3rem;
+    text-align: center;
+    background: #2B2B2B;
+}
+.cd-main-content {
+  position: relative;
+}
+.border-wrapper {
+    border-style: solid;
+    height: 300px;
+    border-width: thin;
+    border-color: black;
+}
+.footer-properties {
+    position: relative;
+    bottom: 0;
+    background-color: #2B2B2B;
+    width: 100vw;
+    padding: 10px;
+}
+.car-block {
+    max-width: 100%;
+    overflow: hidden;
+    font-family:BebasNeue;
+}
+@media (max-width: 768px) {
+
+    .car-block {
+        padding: 0px;
+    }
+}
+.car-info {
+    background-color: white;
+    height: 98px;
+    padding: 10px;
+}
+.inside-div {
+    object-fit: contain;
+    margin: 0px;
+    width: 100%;
+    height: 200px;
+}
+@media (max-width: 768px) {
+
+    .inside-div {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+.align-btn {
+    width: 100vw;
+}
+.centerize {
+    display: block;
+    font-family:BebasNeue;
+    margin: 0 auto;
+}
+ul.products li {
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+    *display: inline;
+    *zoom: 1;
+    padding: 3px;
+}
+@media(max-width: 768px) {
+    ul.products li {
+        width: 100%;
+        display: inline-block;
+        vertical-align: top;
+        *display: inline;
+        *zoom: 1;
+        padding: 3px;
+    }
+}
+.showHide {
+    display: none;
+}
+
+/* Desktop*/
+@media screen and (min-width: 768px) {
+    .showHide {
+        display: block;
+    }
+
+    #leftside > button {
+        display: none;
+    }
+}
+#SearchParameters.in,
+#SearchParameters.collapsing {
+    display: block !important;
+}
