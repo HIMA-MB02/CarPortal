@@ -1,0 +1,11 @@
+﻿@model VahanBlog.Entities.FuelTypeFilters
+
+@Html.HiddenFor(x => x.FuelType)
+<div class="form-group">
+    <div class="checkbox-inline">
+        <label>
+            @Html.CheckBoxFor(x => x.isSelected)
+            @Html.DisplayFor(x => x.FuelType)
+        </label>
+    </div>
+</div>

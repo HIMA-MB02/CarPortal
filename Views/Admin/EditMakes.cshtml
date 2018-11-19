@@ -1,0 +1,49 @@
+﻿@model VahanBlog.Entities.MakeFilters
+
+
+@{
+    Layout = null;
+    Model.isSelected = false;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Car</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="panel">
+        <div class="panel-heading">
+            <h3>Edit @Model.Make</h3>
+            <p>Please do not enter any value for isSelected or id. This is only for techinical purposes.</p>
+        </div>
+        @if (TempData["Duplicate"] != null)
+        {
+            <div class="alert alert-danger">@TempData["Duplicate"]</div>
+        }
+        @using (Html.BeginForm("EditMakes", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+            <div class="panel-body">
+                @Html.HiddenFor(m => m.id)
+                @Html.HiddenFor(m => m.isSelected)
+                <div class="form-group">
+                    <label>Makes</label>
+                    @Html.TextBox("Make", null, new { @class = "form-control" })
+                    @Html.ValidationMessage("Make")
+                </div>
+            </div>
+                <div class="panel-footer">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    @Html.ActionLink("Cancel and return to List", "Makes", null, new { @class = "btn btn-default" })
+                </div>
+        }
+    </div>
+
+</body>
+</html>

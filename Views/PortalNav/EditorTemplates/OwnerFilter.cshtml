@@ -1,0 +1,11 @@
+﻿@model VahanBlog.Entities.OwnerFilter
+
+@Html.HiddenFor(x => x.Owner)
+<div class="form-group">
+    <div class="checkbox-inline">
+        <label>
+            @Html.CheckBoxFor(x => x.isSelected)
+            @Html.DisplayFor(x => x.Owner)
+        </label>
+    </div>
+</div>

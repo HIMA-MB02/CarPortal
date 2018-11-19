@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Blogspot</title>
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/modernize")
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+        <div class="container blog-header">
+            <div id="row parent-header text-center">
+                <div id="col-sm-12 child-header">
+                    <div style="padding-top: 100px" class="text-center"><h1>BLOGSPOT</h1></div>
+                </div>
+            </div>
+        </div>
+
+    <!--NavBar-->
+    <div class="body-content" id="posts">
+        @RenderBody()
+    </div>
+    <footer class="footer-design" style="display:table">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h3 class="text-muted" style="padding-top: 20px; width: 100vw;">&copy; @DateTime.Now.Year - Respected Company</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <a style="color: white !important;">Respected Company |</a>
+                <a style="color: white !important;">All Posts |</a>
+                @Html.ActionLink("Admin Login", "AdminView", "Admin", null,new { @style = "color: white !important;" })
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

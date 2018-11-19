@@ -1,0 +1,102 @@
+﻿@model VahanBlog.Entities.Car
+
+@{
+    Layout = null;
+    System.Globalization.CultureInfo Indian = new System.Globalization.CultureInfo("hi-IN");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Custom Styles and Themes-->
+    <link rel="stylesheet" href="~/Content/style.css"> <!-- Resource style -->
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.Make @Model.Model @Model.Year</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container cd-header">
+        <div id="row parent-header text-center">
+            <div id="col-sm-12 child-header">
+                <div class="text-center">
+                    <a href="http://www.vahanpurchase.com">
+                        <h1 style="color:white">ONLINE CAR PORTAL</h1> 
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="cd-main-content">
+        <div class="cd-tab-filter-wrapper">
+            <div class="cd-tab-filter">
+                <a href="http://vahanpurchase.com/Portals/Buy"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                <ul class="nav navbar-nav navbar-right" style="padding-right: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.vahanpurchase.com/#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.vahanpurchase.com/#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.vahanpurchase.com/#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.vahanpurchase.com/#contact">Contact</a>
+                    </li>
+                </ul> <!-- cd-filters -->
+            </div> <!-- cd-tab-filter -->
+        </div> <!-- cd-tab-filter-wrapper -->
+
+    </main>
+    <div class="container" style="padding: 60px;">
+        <div class="row">
+            <div class="col-md-6 text-center" style="height: 300px;">
+                <div class="main-image" style="margin: 0 auto; padding-top: 25px;">
+                    <img src="@Url.Action("GetImage", "Portals",new { carid = Model.CarId, imgid = 0})" alt="Placeholder" class="custom">
+                </div>
+                <ul class="thumbnails">
+                    @{
+                        int i = 0;
+                        foreach (var item in Model.Images)
+                        {
+                            <li><a href="@Url.Action("GetImage", "Portals",new { carid = Model.CarId, imgid = i})"><img style="width: 50px;" src="@Url.Action("GetImage", "Portals",new { carid = Model.CarId, imgid = i})" alt="Thumbnails"></a></li>
+                            i++;
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-md-6 text-center" style="height:300px;">
+                <!--This is the where the details of the car are displayed-->
+                <h3 style="text-transform:uppercase; font-size: 20px; margin-top:0px; font-weight: 700">
+                    <strong>@Model.Make @Model.Model @Model.Year</strong>
+                </h3>
+                <div>
+                    <p style="font-size: 22px; margin-bottom: 0px;"><i class="fa fa-rupee"></i>@(String.Format(Indian, "{0:N}", Model.Price))</p>
+                    <p style="font-size: 13px;" class="text-muted car-details"> @Model.FuelType | @Model.TransmissionType | @Model.Kilometers km | @Model.Owners Owners</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="~/Scripts/jquery.simpleGal.js"></script>
+    <script>
+            $(document).ready(function () {
+                $('.thumbnails').simpleGal({
+                    mainImage: '.custom'
+                });
+            });
+    </script>
+</body>
+</html>

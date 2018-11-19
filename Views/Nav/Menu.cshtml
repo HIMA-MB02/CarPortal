@@ -1,0 +1,19 @@
+﻿@model IEnumerable<string>
+
+<div style="padding-top: 50px;">
+    @foreach (var link in Model)
+    {
+        if (link.Equals("Blog Posts"))
+        {
+            @Html.RouteLink(link, new { controller = "Admin", action = "AdminView" },
+    new { @class = "btn btn-block btn-default btn-lg" })
+        }
+        else
+        {
+            @Html.RouteLink(link, new { controller = "Admin", action = link },
+    new { @class = "btn btn-block btn-default btn-lg" })
+        }
+    }
+    @Html.RouteLink("Instructions", new { controller = "Admin", action = "Instructions" },
+    new { @class = "btn btn-block btn-default btn-lg" })
+</div>

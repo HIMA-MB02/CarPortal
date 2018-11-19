@@ -1,0 +1,43 @@
+﻿@using VahanBlog.HtmlHelpers;
+@model VahanBlog.Models.CarListViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_PortalLayout.cshtml";
+    System.Globalization.CultureInfo Indian = new System.Globalization.CultureInfo("hi-IN");
+}
+@if (Model.Cars.Count() != 0)
+{
+    <ul class="products" style="padding: 0px;">
+        @foreach (var p in Model.Cars)
+        {
+            <li class="car-block">
+                <div class="border-wrapper">
+                    <img class="inside-div" src="@Url.Action("GetImage", "Portals",new { carid = p.CarId, imgid = 0})" />
+                    <div class="car-info">
+                        <h3 style="text-transform:uppercase; font-size: 20px; margin-top:0px; font-weight: 700; white-space: nowrap; overflow: hidden;text-overflow: ellipsis; ">
+                            <strong>@Html.ActionLink(@p.Make + " " + @p.Model + " " + @p.Year, "Details", new { id = p.CarId })</strong>
+                        </h3>
+                        <div>
+                            <p style="font-size: 22px; margin-bottom: 0px;"><i class="fa fa-rupee"></i>@(String.Format(Indian, "{0:N}", p.Price))</p>
+                            <p style="font-size: 13px;" class="text-muted car-details"> @p.FuelType | @p.TransmissionType | @p.Kilometers km </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    <div class="align-btn">
+        <div class="centerize">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Buy", new { page = x }))
+        </div>
+    </div>
+}
+else
+{
+    <div class="container" style="max-width: 100%;">
+        <div class="row text-center">
+            <h3 style="padding-top: 50px;">No Results Found.</h3>
+        </div>
+    </div>
+}

@@ -1,0 +1,80 @@
+﻿@model VahanBlog.Entities.BlogPost
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - BlogSpot</title>
+
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/modernize")
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <style>
+        body {
+            letter-spacing: 0px;
+        }
+       .polaroid {
+            width: 80%;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+            margin: 0 auto;
+            max-width: 400px;
+            overflow: hidden;
+        }
+
+        div.container {
+            text-align: center;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container blog-header">
+    <div id="row parent-header text-center">
+        <div id="col-sm-12 child-header">
+            <h1 style="padding-top: 130px" class="text-center">@Model.Title</h1>
+        </div>
+    </div>
+</div>
+        <div class="image-display">
+           
+                <div class="polaroid">
+                    @if (Model.ImageData != null)
+                    {
+                        <img style=" max-width: 100% ;display:block;" src="@Url.Action("GetImage", "Blog", new { Model.PostId })" />
+                    }
+                    <div class="container" style="max-width: 100%; letter-spacing: -1px;">
+                        <p>@Model.Description</p>
+                    </div>
+                </div>
+                
+            }
+        </div>
+<div class="container">
+    <div class="row" id="displayContent">
+       @Html.Raw(Model.Content)
+    </div>
+</div>
+    <footer class="footer-design" style="display:table">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h3 class="text-muted" style="padding-top: 20px; width: 100vw;">&copy; @DateTime.Now.Year - Respected Company</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <a style="color: white !important;">Vahan Purchase |</a>
+                <a style="color: white !important;">All Posts |</a>
+                @Html.ActionLink("Admin Login", "AdminView", "Admin", null, new { @style = "color: white !important;" })
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

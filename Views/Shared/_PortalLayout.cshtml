@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Custom Styles and Themes-->
+    <link rel="stylesheet" href="~/Content/style.css"> <!-- Resource style -->
+
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Online Car Portal</title>
+</head>
+<body>
+    <div class="container cd-header">
+        <div id="row parent-header text-center">
+            <div id="col-sm-12 child-header">
+                <div class="text-center">
+                    <a href="http://www.vahanpurchase.com">
+                        <h1 style="color: white;">
+                            ONLINE CAR PORTAL
+                        </h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin: 0px;">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Action("Menu", "PortalNav")
+            </div>
+            <div class="col-md-8" style="margin: 0 auto;">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    </main>
+    <!-- Start Footer-->
+    <footer class="text-center footer-properties">
+        <p style="margin: 0px;font-family: Penna; font-size:20px !important;font-weight:bold;" class="text-muted">Copyright &copy; Ensky Labs @DateTime.Now.Year</p>
+    </footer>
+    <!--End Footer-->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.mixitup.min.js"></script>
+    <script src="~/Scripts/main.js"></script> <!-- Resource jQuery -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown-text").click(function (e) {
+                e.preventDefault();
+                var $this = $(this).siblings(".dropdown-content");
+                $(".dropdown-content:visible").not($this).slideToggle(200); //Close submenu already opened
+                $this.slideToggle(200); //Open the new submenu
+            });
+            $(".dropdown-text-filters").click(function (e) {
+                e.preventDefault();
+                var $this = $(this).siblings(".dropdown-content-filters");
+                $(".dropdown-content-filters:visible").not($this).slideToggle(200); //Close submenu already opened
+                $this.slideToggle(200); //Open the new submenu
+            });
+        });
+    </script>
+</body>
+</html>

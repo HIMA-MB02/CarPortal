@@ -1,0 +1,57 @@
+﻿@model VahanBlog.Models.FilterListViewModel
+
+
+<button class="dropdown-text-filters text-muted hidden-lg hidden-md text-center" style="background-color: #2B2B2B; color: white; width: 100%; height: 50px; text-decoration: none; font-size: 20px;">
+    <span style="text-decoration: none; font-size: 14px;" class="glyphicon glyphicon-tasks"></span>Filters
+</button>
+<h2 class="dropdown-text text-muted" style="text-decoration: none;font-family: BebasNeue;font-size: 30px;">Refine Results</h2>
+<div class="dropdown-content-filters" style="font-family: BebasNeue;font-size: 20px;">
+    @using (Html.BeginForm("Buy", "Portals"))
+    {
+        <div class="dropdown">
+            <a class="dropdown-text text-muted" style="text-decoration: none; font-size: 20px;">
+                <span style="text-decoration: none; font-size: 14px;" class="glyphicon glyphicon-chevron-down"></span> Make
+            </a>
+            <div class="dropdown-content">
+                @Html.EditorFor(model => model.MakeFilters)
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a class="dropdown-text text-muted" style="text-decoration: none; font-size: 20px;">
+                <span style="text-decoration: none; font-size: 14px;" class="glyphicon glyphicon-chevron-down"></span> Fuel
+            </a>
+            <div class="dropdown-content">
+                @Html.EditorFor(model => model.FuelTypeFilters)
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a class="dropdown-text text-muted" style="text-decoration: none; font-size: 20px;">
+                <span style="text-decoration: none; font-size: 14px;" class="glyphicon glyphicon-chevron-down"></span> Transmission
+            </a>
+            <div class="dropdown-content">
+                @Html.EditorFor(model => model.TransmissionTypeFilters)
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a class="dropdown-text text-muted" style="text-decoration: none; font-size: 20px;">
+                <span style="text-decoration: none; font-size: 14px;" class="glyphicon glyphicon-chevron-down"></span> Owners
+            </a>
+            <div class="dropdown-content">
+                @Html.EditorFor(model => model.OwnerFilters)
+            </div>
+        </div>
+        <div class="dropdown">
+            <a class="dropdown-text text-muted" style="text-decoration: none; font-size: 20px;">
+                <span style="text-decoration: none; font-size: 14px;" class="glyphicon glyphicon-chevron-down"></span> Price
+            </a>
+            <div class="dropdown-content">
+                @Html.EditorFor(model => model.PriceFilters)
+            </div>
+        </div>
+
+        <input type="submit" value="APPLY" style="width: 50%;" class="filter-apply" />
+    }
+</div> <!-- cd-filter -->

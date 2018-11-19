@@ -1,0 +1,66 @@
+﻿@model IEnumerable<VahanBlog.Entities.BlogPost>
+
+@{
+    ViewBag.Title = "Recent Posts";
+}
+
+
+<div class="container" style="padding-bottom: 0px;">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h4 id="index-post-heading">RECENT POSTS <hr class="title-underline"></h4>
+        </div>
+    </div>
+</div>
+    @{
+        int i = 0;
+        foreach (var p in Model)
+        {
+            if (i % 2 == 0)
+            {
+                <div class="container post-design">
+                    <div class="row" id="blog-post">
+                        <div class="col-md-5">
+                            <h2>
+                                @p.Title
+                            </h2>
+                            <hr class="title-underline">
+                            <p>
+                                @p.Description
+                            </p>
+                            @Html.ActionLink("Read More>>", "DisplayPost", new { @postID = @p.PostId }, null)
+                        </div>
+                        <div class="col-md-7">
+                            <img style="width: 400px; display:block; margin:auto; height: auto;"
+                                 src="@Url.Action("GetImage", "Blog",new { @p.PostId })" />
+                        </div>
+                    </div>
+                    <hr class="title-underline">
+                </div>
+            }
+            else
+            {
+                <div class="container post-design">
+                    <div class="row" id="blog-post">
+                        <div class="col-md-7">
+                            <img style="width: 400px; display:block; margin:auto; height: auto;"
+                                 src="@Url.Action("GetImage", "Blog",new { @p.PostId })" />
+                        </div>
+                        <div class="col-md-5">
+                            <h2>
+                                @p.Title
+                            </h2>
+                            <hr class="title-underline">
+                            <p>
+                                @p.Description
+                            </p>
+                            @Html.ActionLink("Read More>>", "DisplayPost", new { @postID = @p.PostId }, null)
+                        </div>
+                    </div>
+                    <hr class="title-underline">
+                </div>
+            }
+            i++;
+        }
+    
+    }

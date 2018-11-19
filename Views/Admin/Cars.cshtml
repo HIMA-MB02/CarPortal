@@ -1,0 +1,61 @@
+﻿@model IEnumerable<VahanBlog.Entities.Car>
+
+@{
+    ViewBag.Title = "Cars";
+    Layout = "~/Views/Shared/_AdminShared.cshtml";
+}
+
+<h2>Cars</h2>
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success">@TempData["message"]</div>
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>All Cars</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(model => model.Make)</th>
+                <th>@Html.DisplayNameFor(model => model.Model)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                <th>@Html.DisplayNameFor(model => model.FuelType)</th>
+                <th>@Html.DisplayNameFor(model => model.TransmissionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Kilometers)</th>
+                <th></th>
+            </tr>
+            @{
+                int i = 1;
+                foreach (var item in Model)
+                {
+            <tr>
+                <td>@i</td>
+                <td>@Html.DisplayFor(modelItem => item.Make)</td>
+                <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>@Html.DisplayFor(modelItem => item.FuelType)</td>
+                <td>@Html.DisplayFor(modelItem => item.TransmissionType)</td>
+                <td>@Html.DisplayFor(modelItem => item.Kilometers)</td>
+                <td>
+                    @Html.ActionLink("Edit", "EditCar", new { item.CarId }) |
+                    @Html.ActionLink("Delete", "DeleteCar", new { item.CarId })
+                </td>
+            </tr>
+                    i++;
+                }
+
+            }
+
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Add Car", "CreateCar", null,
+new { @class = "btn btn-default" })
+    </div>
+</div>
+
+

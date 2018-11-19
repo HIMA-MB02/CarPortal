@@ -1,0 +1,50 @@
+﻿@model IEnumerable<VahanBlog.Entities.MakeFilters>
+
+@{
+    ViewBag.Title = "Makes";
+    Layout = "~/Views/Shared/_AdminShared.cshtml";
+}
+
+<h2>Makes</h2>
+
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success">@TempData["message"]</div>
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>All Makes</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(model => model.Make)</th>
+                <th></th>
+            </tr>
+            @{
+                int i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@Html.DisplayFor(modelItem => item.Make)</td>
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteMakes", new { item.id })
+                        </td>
+                    </tr>
+                    i++;
+                }
+
+            }
+
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Add Make", "CreateMakes", null,
+new { @class = "btn btn-default" })
+    </div>
+</div>
+

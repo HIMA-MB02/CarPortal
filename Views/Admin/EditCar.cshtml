@@ -1,0 +1,95 @@
+﻿@model VahanBlog.Models.EditCarViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Car</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="panel">
+    <div class="panel-heading">
+        <h3>Edit</h3>
+    </div>
+
+        @if (TempData["exceedImageCount"] != null)
+        {
+            <div class="alert alert-danger">@TempData["exceedImageCount"]</div>
+        }
+    @using (Html.BeginForm("EditCar", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+            <div class="panel-body">
+                @Html.HiddenFor(m => m.Car.CarId)
+
+                <label>@Html.DisplayNameFor(m => m.Car.Make)</label>
+                1     @Html.DropDownListFor(m => m.Car.Make, Model.Makes, "Please Select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Car.Make)
+
+                <label>@Html.DisplayNameFor(m => m.Car.Model)</label>
+                @Html.TextBoxFor(m => m.Car.Model, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Car.Model)
+
+                <label>@Html.DisplayNameFor(m => m.Car.Year)</label>
+                @Html.TextBoxFor(m => m.Car.Year, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Car.Year)
+
+                <label>@Html.DisplayNameFor(m => m.Car.Price)</label>
+                @Html.TextBoxFor(m => m.Car.Price, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Car.Price)
+
+                <label>@Html.DisplayNameFor(m => m.Car.Kilometers)</label>
+                @Html.TextBoxFor(m => m.Car.Kilometers, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Car.Kilometers)
+
+                <label>@Html.DisplayNameFor(m => m.Car.FuelType)</label>
+                @Html.DropDownListFor(m => m.Car.FuelType, new List<SelectListItem> { new SelectListItem { Text = "Petrol", Value = "Petrol" }, new SelectListItem { Text = "Diesel", Value = "Diesel" }, new SelectListItem { Text = "CNG", Value = "CNG" }, new SelectListItem { Text = "LPG", Value = "LPG" }, new SelectListItem { Text = "Electric", Value = "Electric" } }, "Please select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Car.FuelType)
+
+                <label>@Html.DisplayNameFor(m => m.Car.TransmissionType)</label>
+                @Html.DropDownListFor(m => m.Car.TransmissionType, new List<SelectListItem> { new SelectListItem { Text = "Automatic", Value = "Automatic" }, new SelectListItem { Text = "Manual", Value = "Manual" } }, "Please select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Car.TransmissionType)
+
+                <label>@Html.DisplayNameFor(m => m.Car.Owners)</label>
+                @Html.DropDownListFor(m => m.Car.Owners, new List<SelectListItem> { new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }, new SelectListItem { Text = "4 or more", Value = "4" } }, "Please select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Car.Owners)
+
+                @Html.LabelFor(x => x.File)
+                @Html.TextBoxFor(x => x.File, new { @class = "fuPhoto", type = "file", multiple = "true" })
+                <label ID="myLabel" ForeColor="#CC0000" />
+
+            </div>
+        
+                <div class="panel-footer">
+                    <input type="submit" value="Save" class="btn btn-primary btnUpload" />
+                    @Html.ActionLink("Cancel and return to List", "Cars", null, new { @class = "btn btn-default " })
+                </div>
+        }
+</div>
+    <script>
+    $(function () {
+        $('.fuPhoto').change(
+        function () {
+   var files = $('input[type="file"]')[0].files;
+    alert(files.length )
+        //var fileExtension = ['jpeg', 'jpg'];
+if (files.length>5) {
+                    $('.btnUpload').attr("disabled", true);
+                    $('#myLabel').html("limit upto six");
+                }
+                else {
+                    $('.btnUpload').attr("disabled", false);
+                    $('#myLabel').html(" ");
+                }
+            })
+    })
+    </script>
+</body>
+</html>

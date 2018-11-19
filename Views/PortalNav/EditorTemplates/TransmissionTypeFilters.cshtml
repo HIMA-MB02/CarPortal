@@ -1,0 +1,11 @@
+﻿@model VahanBlog.Entities.TransmissionTypeFilters
+
+@Html.HiddenFor(x => x.TransmissionType)
+<div class="form-group">
+    <div class="checkbox-inline">
+        <label>
+            @Html.CheckBoxFor(x => x.isSelected)
+            @Html.DisplayFor(x => x.TransmissionType)
+        </label>
+    </div>
+</div>

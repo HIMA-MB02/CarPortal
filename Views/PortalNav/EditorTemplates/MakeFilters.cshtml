@@ -1,0 +1,12 @@
+﻿@model VahanBlog.Entities.MakeFilters
+
+@Html.HiddenFor(x => x.id)
+@Html.HiddenFor(x => x.Make)
+<div class="form-group">
+    <div class="checkbox-inline">
+        <label>
+            @Html.CheckBoxFor(x => x.isSelected)
+            @Html.DisplayFor(x => x.Make)
+            </label>
+        </div>
+    </div>

@@ -1,0 +1,12 @@
+﻿@model VahanBlog.Entities.PriceFilters
+
+@Html.HiddenFor(x => x.PriceRange)
+<div class="form-group">
+    <div class="checkbox-inline">
+        <label>
+            @Html.CheckBoxFor(x => x.isSelected)
+            @Html.DisplayFor(x => x.PriceRange)
+        </label>
+    </div>
+</div>
+
